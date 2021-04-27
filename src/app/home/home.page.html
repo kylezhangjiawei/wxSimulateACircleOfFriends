@@ -1,14 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <svg t="1617699809321" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5132" width="32" height="32"><path d="M629.291 840.832l60.331-60.331-268.501-268.501 268.501-268.501-60.331-60.331-328.832 328.832z" p-id="5133"></path></svg>
+        </ion-buttons>
+        <ion-title style="text-align: center;margin: 0 auto;">相册</ion-title>
+        <ion-buttons slot="end">
+            <svg t="1617699987600" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6310" width="32" height="32"><path d="M184.889344 426.667008c39.273472 0 71.110656 31.837184 71.110656 71.110656s-31.837184 71.11168-71.110656 71.11168c-39.274496 0-71.11168-31.838208-71.11168-71.11168 0-39.273472 31.837184-71.110656 71.11168-71.110656z m327.110656 0c39.273472 0 71.110656 31.837184 71.110656 71.110656s-31.83616 71.11168-71.110656 71.11168c-39.273472 0-71.110656-31.838208-71.110656-71.11168 0-39.273472 31.83616-71.110656 71.110656-71.110656z m327.110656 0c39.274496 0 71.11168 31.837184 71.11168 71.110656s-31.837184 71.11168-71.11168 71.11168c-39.273472 0-71.110656-31.838208-71.110656-71.11168 0-39.273472 31.837184-71.110656 71.110656-71.110656z" fill="#323233" p-id="6311"></path></svg>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+    <div class="item"  *ngFor="let item of wxArrayData;let i = index;">
+        <p>
+            <span>{{item.day}}</span>
+            <span>{{item.month}}月</span>
+        </p>
+        <div>
+            <p>{{item.title}}</p>
+            <div>
+                <img [src]="item.imgUrl" alt="">
+                <p>{{item.content}}</p>
+            </div>
+        </div>
+    </div>
+    <p class="footer">
+        <ion-button expand="full" (click)="presentModal()">上传内容</ion-button>
+        <ion-button expand="full" (click)="reload()">刷新</ion-button>
+    </p>
 </ion-content>

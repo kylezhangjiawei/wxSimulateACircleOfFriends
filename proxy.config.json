@@ -1,0 +1,11 @@
+{
+  "/wxdata":{
+    "target":"http://120.79.150.201:8123/",
+    "secure":false,
+    "logLevel":"debug",
+    "changeOrigin":true,
+    "pathRewrite":{
+      "^/wxdata":""
+    }
+  }
+}

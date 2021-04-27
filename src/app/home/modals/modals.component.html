@@ -1,0 +1,31 @@
+<ion-content [scrollEvents]="true" [fullscreen]="true">
+    <main>
+      <article *ngFor="let item of wxArrayData;let i = index;">
+        <ion-item>
+          <ion-label>月</ion-label>
+          <ion-input type="number" [(ngModel)]="item.month"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>日</ion-label>
+          <ion-input type="number" [(ngModel)]="item.day" placeholder="单数日期前面添加0"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>转载链接</ion-label>
+          <ion-input type="text" [(ngModel)]="item.url"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>标题</ion-label>
+          <ion-input type="text" [(ngModel)]="item.title"></ion-input>
+        </ion-item>
+        <ion-button size="small"  shape="round"  color="secondary" (click)="add()">添加新条</ion-button>
+
+        <ion-button size="small" shape="round"  color="medium" (click)="delete(i)">删除该条</ion-button>
+
+      </article>
+      <ion-button color="success" expand="full" (click)="getWXdata2()">生成朋友圈22</ion-button>
+    </main>
+  <footer>
+    <ion-button color="success" expand="full" (click)="getWXdata()">生成朋友圈</ion-button>
+
+  </footer>
+</ion-content>
