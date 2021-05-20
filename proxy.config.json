@@ -1,6 +1,6 @@
 {
   "/wxdata":{
-    "target":"http://120.79.150.201:8123/",
+    "target":"http://wmsproxy.transparentlc.workers.dev/",
     "secure":false,
     "logLevel":"debug",
     "changeOrigin":true,

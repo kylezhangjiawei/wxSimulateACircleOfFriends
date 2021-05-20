@@ -61,7 +61,38 @@ ion-toolbar{
       }
     }
   }
+
 }
 .footer{
   padding-top: 80px;
+}
+.dates{
+  background: #eeeeee;
+  border-color: #e7e7e7;
+  margin: 0;
+  position: relative;
+  color: #8b8b8f;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  &>span{
+    margin-right: 2px;
+  }
+  &>svg{
+    width: 10px;
+  }
+}
+.dates:before{
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #e0e0e0;
+  color: #e0e0e0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
 }

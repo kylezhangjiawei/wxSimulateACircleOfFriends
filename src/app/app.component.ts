@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { LoadingsService } from "./loadings.service";
+import VConsole from 'vconsole';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class AppComponent {
       // console.log(val);
       this.isLoading = val;
     })
+    // const vconsole = new VConsole();
   }
 
   initializeApp() {

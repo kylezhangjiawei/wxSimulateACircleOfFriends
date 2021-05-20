@@ -38,7 +38,9 @@ export class ModalsComponent implements OnInit {
       private modalController:ModalController
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getSomeData();
+  }
 
   /* 获取URL内容 */
   getWXdata(){
@@ -59,7 +61,7 @@ export class ModalsComponent implements OnInit {
 
   getDatas(item,index):void{
     this.presentLoading();
-    this.http.get('https://blankyi.com/zjw/',{params:{url:item.url}}).subscribe(res =>{
+    this.http.get('wxdata/',{params:{url:item.url}}).subscribe(res =>{
       if((res as any).success){
         this.wxArrayData[index].imgUrl=(res as any).cover;
         this.wxArrayData[index].content = (res as any).title;
@@ -71,13 +73,20 @@ export class ModalsComponent implements OnInit {
 
   getTest(item,index){
     this.presentLoading();
-    this.http.get('wxdata/',{params:{url:item.url}}).subscribe(res =>{
+    this.http.get('http://175.27.231.102:8080/zhangjiawei/interface',{params:{url:item.url}}).subscribe(res =>{
       if((res as any).success){
         this.wxArrayData[index].imgUrl=(res as any).cover;
         this.wxArrayData[index].content = (res as any).title;
         this.hiden();
         console.log(this.wxArrayData)
       }
+    }
+    )
+  }
+
+  getSomeData(){
+    this.http.get('http://39.98.33.39:38081/tlc-advice-info/orderassess/pc/list?name=%E6%B5%8B%E8%AF%95&current=1&size=8',{params:{}}).subscribe(res =>{
+        console.log(res,123);
     })
   }
 

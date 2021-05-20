@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalsComponent } from "./modals/modals.component";
 import VConsole from 'vconsole';
+import * as XLSX from 'xlsx';
 
 
 
@@ -19,8 +20,9 @@ import VConsole from 'vconsole';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
+    fileDatas:any;
   wxArrayData:wxDatas[];
 
   constructor(public modalController: ModalController) {}
@@ -40,6 +42,28 @@ export class HomePage {
 
   reload() {
     location.reload();
+  }
+
+  /* 上传文件 */
+  upLoad(evt: any){
+    const target: DataTransfer = <DataTransfer>(evt.target);
+    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    const reader: FileReader = new FileReader();
+    reader.onload = (e: any) => {
+      /* read workbook */
+      const bstr: string = e.target.result;
+      const wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
+
+      /* grab first sheet */
+      const wsname: string = wb.SheetNames[0];
+      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+      /* save data */
+      this.fileDatas = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1}));
+      console.log(this.fileDatas)
+    };
+    reader.readAsBinaryString(target.files[0]);
+    console.log(this.fileDatas)
   }
 
 }

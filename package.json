@@ -24,11 +24,13 @@
     "@ionic-native/status-bar": "^5.32.1",
     "@ionic/angular": "^4.11.13",
     "browserslist": "^4.16.5",
-    "caniuse-lite": "^1.0.30001218",
+    "caniuse-lite": "^1.0.30001228",
+    "cordova-res": "^0.15.3",
     "core-js": "^2.6.12",
     "rxjs": "^6.5.5",
     "tslib": "^1.14.1",
     "vconsole": "^3.4.1",
+    "xlsx": "^0.17.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
