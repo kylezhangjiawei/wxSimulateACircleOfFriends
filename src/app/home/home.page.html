@@ -14,23 +14,32 @@
 </ion-header>
 
 <ion-content>
-    <div class="item"  *ngFor="let item of wxArrayData;let i = index;">
-        <p>
+    <div class="item"  *ngFor="let item of wxArrayData;let i = index;" [style.padding-top]="!filterTime(item,i) ? '0px':'15px'">
+        <p *ngIf="filterTime(item,i); else showEmpty">
             <span>{{item.day}}</span>
             <span>{{item.month}}月</span>
         </p>
+        <ng-template #showEmpty>
+            <p></p>
+        </ng-template>
         <div>
-            <p>{{item.title}}</p>
+<!--            <p>{{item.title.substr(0,17)}}</p>-->
             <div>
                 <img [src]="item.imgUrl" alt="">
-                <p>{{item.content}}</p>
+                <span class="circle" *ngIf="item.type ==='video'">
+                    <svg t="1622687972279" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2442" width="32" height="32"><path d="M113.777778 1024 113.777778 0 910.222222 512 113.777778 1024Z" p-id="2443" fill="#ffffff"></path></svg>
+                </span>
+                <p>
+                    <span>{{item.content}}</span>
+                </p>
             </div>
         </div>
     </div>
     <p class="footer">
-        <ion-button expand="full" (click)="presentModal()">上传内容</ion-button>
+        <ion-button expand="full" (click)="files.click()">上传内容</ion-button>
         <ion-button expand="full" (click)="reload()">刷新</ion-button>
-        <ion-button expand="full" (click)="fileUp.click()">上传文件</ion-button>
-        <input type="file" multiple="multiple" #fileUp  (change)="upLoad($event)" style="display: none;">
+<!--        <ion-button expand="full" (click)="getImg()">获取图片</ion-button>-->
+        <input type="file" style="display: none;" #files  (change)="putFile($event)">
     </p>
+<!--    <img [src]="imgsrc" alt="">-->
 </ion-content>
